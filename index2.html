@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CycleSent - PCOS App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<!-- HOME -->
+<section id="home" class="active">
+    <h1>CycleSent 💜</h1>
+    <p>PCOS Health & Wellness App</p>
+    <button onclick="go('profile')">Start</button>
+</section>
+
+<!-- PROFILE -->
+<section id="profile">
+    <h2>Your Details</h2>
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="age" placeholder="Age">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <button onclick="go('symptoms')">Next</button>
+</section>
+
+<!-- SYMPTOMS -->
+<section id="symptoms">
+    <h2>Symptoms</h2>
+
+    <label><input type="checkbox" id="thyroid"> Thyroid</label><br>
+    <label><input type="checkbox" id="hairloss"> Hair Loss</label><br>
+    <label><input type="checkbox" id="acne"> Acne</label><br>
+    <label><input type="checkbox" id="irregular"> Irregular Period</label><br>
+    <label><input type="checkbox" id="facialhair"> Facial Hair</label><br>
+
+    <button onclick="calculate()">Predict</button>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+    <h2 id="welcome"></h2>
+
+    <div class="card">
+        <p>BMI: <span id="bmi"></span></p>
+        <p>PCOS Risk: <span id="risk"></span></p>
+        <p id="warningMsg"></p>
+    </div>
+
+    <!-- WATER -->
+    <div class="card">
+        <p>Water Intake: <span id="water">0</span> Glass</p>
+        <button onclick="addWater()">+ Add</button>
+    </div>
+
+    <button onclick="go('cycle')">Cycle Tracker</button>
+    <button onclick="go('insight')">Diet Plan</button>
+    <button onclick="restartApp()">Restart</button>
+</section>
+
+<!-- CYCLE TRACKER -->
+<section id="cycle">
+    <h2>Period Tracker</h2>
+    <input type="date" id="date"><br>
+    <button onclick="predictCycle()">Predict Next</button>
+    <p id="next"></p>
+
+    <button onclick="go('dashboard')">Back</button>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insight">
+    <h2>Diet Plan</h2>
+    <ul>
+        <li>🥗 High Fiber Diet</li>
+        <li>🍎 Fruits & Veggies</li>
+        <li>🚫 Reduce Sugar</li>
+        <li>🏃 Exercise Daily</li>
+    </ul>
+    <button onclick="go('dashboard')">Back</button>
+</section>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAaP_D0u13A9Pk6t4zVtxlKGM0eNlq4xfs",
+    authDomain: "cyclesent-ae56a.firebaseapp.com",
+    projectId: "cyclesent-ae56a",
+    storageBucket: "cyclesent-ae56a.firebasestorage.app",
+    messagingSenderId: "286458250078",
+    appId: "1:286458250078:web:003b1c6d567e15b02805cf",
+    measurementId: "G-3VX2V6MLN3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+<script src="script2.js"></script>
+
+</body>
+</html>
